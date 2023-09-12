@@ -1,4 +1,7 @@
+
 game();
+
+
 
 function game() {
     let isPause = false;
@@ -8,6 +11,7 @@ function game() {
     let score = 0;
 
     const car = document.querySelector('.car');
+   
 
     const carInfo = {
         ...createElementInfo(car),
@@ -17,9 +21,10 @@ function game() {
             left:null,
             right:null,
         }
-    }
-   
-   
+    } 
+
+    
+
 
     const coin = document.querySelector('.coin');
     const coinInfo = createElementInfo(coin)
@@ -47,7 +52,50 @@ function game() {
     
     const threes = document.querySelectorAll('.three');
 
- 
+
+    ///////
+
+    
+    
+    document.getElementById('thorID').addEventListener("click", function() {
+        document.getElementById('characterHeroID__container').classList.add('close')
+        document.getElementById('characterHeroID').classList.add('close')
+        document.getElementById('loki-car').remove()
+        setTimeout(function(){
+            const myElement = document.querySelector('.game-button')
+            myElement.click() 
+        }, 0)
+
+        
+    })
+    document.getElementById('lokiID').addEventListener("click", function() {
+        document.getElementById('characterHeroID__container').classList.add('close')
+        document.getElementById('characterHeroID').classList.add('close')
+        document.getElementById('loki-car').remove()
+        document.getElementById('thor-car').src='./../img/main/lokiv1.png'
+        
+        //
+        setTimeout(function(){
+            const myElement = document.querySelector('.game-button')
+            myElement.click() 
+        }, 0)
+
+        
+    })
+
+
+    document.addEventListener('DOMContentLoaded', function(e){ 
+        setTimeout(function(){
+              const myElement = document.querySelector('.game-button') 
+              myElement.click() 
+          }, 0) 
+      })
+
+
+
+    ///////
+
+
 
     const treesCoords = []
 
@@ -190,20 +238,35 @@ function game() {
 
     animationId = requestAnimationFrame(startGame)
 
+
     function startGame() {
 
         if (hasCollision(carInfo,dangerInfo)){
-        
-            return finishGame();;
+
+            return finishGame();
            }
+
+       
         
        threesAnimation();
        elementAnimation(coin ,coinInfo , -100);
        elementAnimation(danger, dangerInfo, -250);
-      // elementAnimation(arrow, arrowInfo, -600);
+       elementAnimation(arrow, arrowInfo, -600);
+
+
+
+       if (coinInfo.visible && hasCollision(carInfo,arrowInfo)){
+
+            arrow.style.display = 'none';
+            arrowInfo.visible = false;
+
+          
+
+            turbo();
+
+            }
 
        if (coinInfo.visible && hasCollision(carInfo,coinInfo)) {
-            console.log('test')
             score++;
             gameScore.innerText = score;
             coin.style.display = 'none';
@@ -213,10 +276,6 @@ function game() {
                 speed+= 2;
               }
        }
-
-       
-
-       
 
 
        animationId = requestAnimationFrame(startGame)
@@ -328,6 +387,8 @@ function game() {
 
     }
 
+
+
     function finishGame () {
         cancelAnimations();
         
@@ -341,8 +402,19 @@ function game() {
     }
 
 
-
-
+    function turbo() {
+        if(speed < 10) {
+            speed = 10;
+            setTimeout(turboClear,1000)
+        }else if(speed > 10) {
+            speed = 10;
+        
+        }
+    }
+    function turboClear() {
+        return speed = 5;
+    }
+    
     
     gameButton.addEventListener('click', ()=> {
         isPause = !isPause
@@ -365,7 +437,8 @@ function game() {
             window.location.reload();
         })
 
-    })
+
+    });
 
    
 

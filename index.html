@@ -5,11 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Travel Portal</title>
 </head>
 <body> 
-    <div class="road"></div>
-    <img src="./img/main/car.png" alt="car" class="car">
+    <div class="road">
+        <div class="road-color1"></div>
+        <div class="road-color2"></div>
+        <div class="road-color3"></div>
+        <div class="road-color4"></div>
+        <div class="road-color5"></div>
+        <div class="road-color6"></div>
+        <div class="road-color7"></div>
+    </div>
+    <img src="./img/main/torv1.png" alt="thor" class="car thor-car" id="thor-car">
+    <img src="./img/main/lokiv1.png" alt="loki" class="car loki-car" id="loki-car">
+    
 
     <img src="./img/main/bush1.png" alt="" class="three1 three">
     <img src="./img/main/bush3.png" alt="" class="three2 three">
@@ -19,13 +32,18 @@
     <img src="./img/main/bush1.png" alt="" class="three6 three">
 
     <img src="./img/icons/arrow.png" alt="arrow" class="arrow">
-    <img src="./img/icons/danger.png" alt="danger" class="danger">
+    <img src="./img/icons/danger.png" alt="danger" class="danger"> 
     <img src="./img/icons/coin.png" alt="coin" class="coin">
 
+
+
+    
     <button type="button" class="game-button"> 
         <img class="pause" src="./img/icons/pause.png" alt="pause">
         <img src="./img/icons/play.png" alt="play" class="play">
     </button>
+    
+    
     <div class="game-score">
         0
     </div>
@@ -34,10 +52,32 @@
             <p class="finish-text" >Итоговый счет: <span class="finish-text-score" >0</span> </p>
             <button type="button" class="restart-button" >Начать заного</button>
         </div>
-        
     </div>
-   
+    <div class="characterHero" id="characterHeroID">
+        <div class="characterHero__container" id="characterHeroID__container" class="open">
+            <p class="character-text">Пролетите по радужному мосту и помогите собрать как можно больше осколков камней бесконечности!<br></p>
+                <div class="helper">
+                    <div class="coin-div"><img src="./img/icons/coin.png" alt="coin" class="helper-coin_image"> <p> Собирайте осколки камней бесконености </p></div>
+                    <div class="arrow-div"><img src="./img/icons/arrow.png" alt="beer" class="helper-beer_image"> <p>Пиво ускорит тебя,если ты слишком медленный и затормозит,если слишком быстр</p></div>
+                    <div class="danger-div"> <img src="./img/icons/danger.png" alt="tanos" class="helper-tanos_image"> <p>Берегись Таноса<br> или проиграешь!<br> </p></div>
+                </div>
 
+            <div class="heroic">
+                <span>Выберите персонажа:</span></p>
+                <div class="thor" id="thorID">
+                    <span>THOR </span>
+                    <button class="heroic-btn"><img src="./img/main/torv1.png" alt="thor" class="thor-image"></button>
+                    
+                </div>
+                <div class="loki" id="lokiID">
+                    <span>LOKI</span>
+                    <button class="heroic-btn"><img src="./img/main/lokiv1.png" alt="loki" class="loki-image"></button>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <script src="./main.js"></script>
 </body>
