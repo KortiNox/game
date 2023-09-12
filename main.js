@@ -23,8 +23,6 @@ function game() {
         }
     } 
 
-    
-
 
     const coin = document.querySelector('.coin');
     const coinInfo = createElementInfo(coin)
@@ -251,7 +249,7 @@ function game() {
        threesAnimation();
        elementAnimation(coin ,coinInfo , -100);
        elementAnimation(danger, dangerInfo, -250);
-       elementAnimation(arrow, arrowInfo, -600);
+       elementAnimation(arrow, arrowInfo, -1600);
 
 
 
@@ -275,8 +273,13 @@ function game() {
             if (score % 3 === 0) {
                 speed+= 2;
               }
+            if(score > 5) {
+                speed+= 0.5;
+            }else if(score > 20){
+                speed+=1;
+            }
+            
        }
-
 
        animationId = requestAnimationFrame(startGame)
         
@@ -414,7 +417,16 @@ function game() {
     function turboClear() {
         return speed = 5;
     }
+
     
+
+    window.addEventListener('keydown', (e) => {
+        if(e.key === "Escape") {
+            gameButton.click();
+        }
+    
+    });
+
     
     gameButton.addEventListener('click', ()=> {
         isPause = !isPause
@@ -441,24 +453,6 @@ function game() {
     });
 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
